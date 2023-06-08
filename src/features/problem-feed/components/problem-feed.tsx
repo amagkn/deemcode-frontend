@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { groupsByOrder } from "../../../entities/problem/constants/groups";
 import {
   Accordion,
@@ -13,27 +13,20 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { problemsFeedData } from "../problemsFeedData";
-import { GroupEnum } from "../../../entities/problem/types/group-enum";
-import { ProblemEntity } from "../../../entities/problem/types/problem-entity";
+import { useNavigate } from "react-router-dom";
+import { difficultyDictionary } from "../../../entities/problem/constants/difficulty";
+import { useProblemsFeedDataByGroupId } from "../hooks/useProblemsFeedDataByGroupId";
 
 type ProblemFeedProps = {};
 
 const ProblemFeed: React.FC<ProblemFeedProps> = () => {
-  const dataByGroupId = useMemo(() => {
-    return problemsFeedData.reduce<{ [key in GroupEnum]?: ProblemEntity[] }>(
-      (acc, el) => {
-        if (acc[el.groupId]) {
-          acc[el.groupId]!.push(el);
-        } else {
-          acc[el.groupId] = [el];
-        }
+  const navigate = useNavigate();
 
-        return acc;
-      },
-      {}
-    );
-  }, []);
+  const dataByGroupId = useProblemsFeedDataByGroupId();
+  console.log(dataByGroupId);
+  const redirectToProblem = (problemSlug: string) => {
+    navigate(`/problems/${problemSlug}`);
+  };
 
   return (
     <div>
@@ -55,6 +48,7 @@ const ProblemFeed: React.FC<ProblemFeedProps> = () => {
                 <TableBody>
                   {dataByGroupId[group.id]!.map((problem) => (
                     <TableRow
+                      onClick={() => redirectToProblem(problem.slug)}
                       key={problem.id}
                       sx={{
                         "&:last-child td, &:last-child th": { border: 0 },
@@ -64,7 +58,9 @@ const ProblemFeed: React.FC<ProblemFeedProps> = () => {
                       <TableCell component="th" scope="row">
                         {problem.title}
                       </TableCell>
-                      <TableCell align="left">{problem.difficulty}</TableCell>
+                      <TableCell align="left">
+                        {difficultyDictionary[problem.difficulty]}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

@@ -1,13 +1,14 @@
 import React from "react";
 import { CssBaseline } from "@mui/material";
-import { HomePage } from "../../pages/home";
 import { ColorThemeProvider } from "../../features/color-theme/color-theme-provider";
+import { RouterProvider } from "react-router-dom";
+import { router } from "../../pages/router";
 
 const App: React.FC = () => {
   return (
     <ColorThemeProvider>
       <CssBaseline />
-      <HomePage />
+      <RouterProvider router={router} />
     </ColorThemeProvider>
   );
 };
