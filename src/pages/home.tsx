@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "@mui/material";
-import { ProblemFeed } from "../../features/problem-feed";
-import { ColorThemeToggler } from "../../features/color-theme/color-theme-toggler";
+import { ProblemFeed } from "../features/problem-feed/components/problem-feed";
+import { ColorThemeToggler } from "../features/color-theme/color-theme-toggler";
 
 const HomePage: React.FC = () => {
   return (

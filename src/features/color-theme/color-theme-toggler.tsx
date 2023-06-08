@@ -1,8 +1,8 @@
 import React from "react";
 import { IconButton, useTheme } from "@mui/material";
-import { ColorModeContext } from "../color-mode-context";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
+import { ColorModeContext } from "./color-mode-context";
 
 type ColorThemeTogglerProps = {};
 
