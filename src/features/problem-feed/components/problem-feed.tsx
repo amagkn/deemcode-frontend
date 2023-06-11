@@ -15,15 +15,15 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { difficultyDictionary } from "../../../entities/problem/constants/difficulty";
-import { useProblemsFeedDataByGroupId } from "../hooks/useProblemsFeedDataByGroupId";
+import { useProblemsByGroupId } from "../hooks/useProblemsByGroupId";
+import { useQueryProblems } from "../../../entities/problem/hooks/useQueryProblems";
 
-type ProblemFeedProps = {};
-
-const ProblemFeed: React.FC<ProblemFeedProps> = () => {
+const ProblemFeed: React.FC = () => {
   const navigate = useNavigate();
 
-  const dataByGroupId = useProblemsFeedDataByGroupId();
-  console.log(dataByGroupId);
+  const { problems } = useQueryProblems();
+  const dataByGroupId = useProblemsByGroupId(problems ? problems : []);
+
   const redirectToProblem = (problemSlug: string) => {
     navigate(`/problems/${problemSlug}`);
   };
@@ -31,13 +31,13 @@ const ProblemFeed: React.FC<ProblemFeedProps> = () => {
   return (
     <div>
       {groupsByOrder.map((group) => (
-        <Accordion>
+        <Accordion key={group.id}>
           <AccordionSummary id={group.id}>
             <Typography>{group.title}</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <TableContainer component={Paper}>
-              <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <Table sx={{ minWidth: 650 }} aria-label="problems table">
                 <TableHead>
                   <TableRow>
                     <TableCell>Задача</TableCell>
