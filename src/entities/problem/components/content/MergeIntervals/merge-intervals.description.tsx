@@ -29,7 +29,7 @@ const examples: ExampleItem[] = [
 const constraints = [
   "1 <= intervals.length <= 104",
   "intervals[i].length == 2",
-  "0 <= starti <= endi <= 104",
+  "0 <= start<i> <= end<i> <= 104",
 ];
 
 const MergeIntervalsDescription: React.FC<
