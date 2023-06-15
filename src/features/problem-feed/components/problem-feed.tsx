@@ -40,8 +40,8 @@ const ProblemFeed: React.FC = () => {
               <Table sx={{ minWidth: 650 }} aria-label="problems table">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Задача</TableCell>
-                    <TableCell>Сложность</TableCell>
+                    <TableCell>Problem</TableCell>
+                    <TableCell>Difficulty</TableCell>
                   </TableRow>
                 </TableHead>
 

@@ -1,7 +1,7 @@
 import { GroupEnum } from "../types/group-enum";
 
 export const groupsDictionary: { [key in GroupEnum]: string } = {
-  [GroupEnum.arrayAndHashing]: "Массивы и хеширование",
+  [GroupEnum.arrayAndHashing]: "Arrays and hashing",
 };
 
 export const groupsByOrder: {

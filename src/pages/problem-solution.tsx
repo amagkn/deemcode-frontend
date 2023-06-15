@@ -19,8 +19,8 @@ const ProblemSolutionPage = () => {
         <Box
           sx={{
             borderLeft: "1px solid pink",
-            borderRight: "1px solid pink",
             paddingX: 2,
+            height: "100%",
           }}
         >
           <ProblemDescription />
@@ -29,7 +29,9 @@ const ProblemSolutionPage = () => {
       <Grid item xs={12} md={6}>
         <Box
           sx={{
+            height: "100%",
             paddingX: 2,
+            borderLeft: "1px solid pink",
           }}
         >
           <ProblemSolution />
