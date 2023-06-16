@@ -11,7 +11,7 @@ import { GetProblemsResponse } from "./getProblemsFeed";
 
 const problems: ProblemEntity[] = [
   {
-    title: "Merge Intervals",
+    title: "Объединить интервалы",
     slug: createSlug("Merge Intervals"),
     id: uuidv4(),
     groupId: GroupEnum.arrayAndHashing,

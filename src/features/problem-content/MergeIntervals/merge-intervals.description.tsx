@@ -1,32 +1,34 @@
 import React from "react";
 
+import { ExampleItem } from "../../../entities/problem/components/ProblemDescription/ExamplesBlock/ExamplesBlock";
 import { ProblemDescription } from "../../../entities/problem/components/ProblemDescription/ProblemDescription";
-import { ExampleItem } from "../../../shared/components/ExamplesBlock/ExamplesBlock";
-import { ConstraintText } from "../../../shared/components/text/ConstraintText";
+import { InlineCode } from "../../../shared/components/text/InlineCode";
 import { PrimaryText } from "../../../shared/components/text/PrimaryText";
 
 type MergeIntervalsDescriptionProps = {};
 
 const examples: ExampleItem[] = [
   {
-    input: "intervals = [[1,3],[2,6],[8,10],[15,18]]",
+    input: "const intervals = [[1,3],[2,6],[8,10],[15,18]]",
     output: "[[1,6],[8,10],[15,18]]",
     explanation:
-      "Since intervals [1,3] and [2,6] overlap, merge them into [1,6].",
+      "Интервалы [1,3] и [2,6] накладываются, они были объединены в вид [1,6].",
   },
 
   {
-    input: "intervals = [[1,4],[4,5]]",
+    input: "const intervals = [[1,4],[4,5]]",
     output: "[[1,5]]",
-    explanation: "Intervals [1,4] and [4,5] are considered overlapping.",
+    explanation: "Интервалы [1,4] and [4,5] были объединены",
   },
 ];
 
 const constraints = [
   "1 <= intervals.length <= 104",
   "intervals[i].length == 2",
-  "0 <= start<i> <= end<i> <= 104",
+  "0 <= start <= end <= 104",
 ];
+
+const links = ["https://leetcode.com/problems/merge-intervals/"];
 
 const MergeIntervalsDescription: React.FC<
   MergeIntervalsDescriptionProps
@@ -35,14 +37,13 @@ const MergeIntervalsDescription: React.FC<
     <ProblemDescription
       examples={examples}
       constraints={constraints}
+      links={links}
       description={
         <PrimaryText>
-          Given an array of <ConstraintText>intervals</ConstraintText> where{" "}
-          <ConstraintText>
-            intervals[i] = [start<sub>i</sub>, end<sub>i</sub>]
-          </ConstraintText>
-          , merge all overlapping intervals, and return an array of the
-          non-overlapping intervals that cover all the intervals in the input.
+          Дан массив <InlineCode>intervals</InlineCode> где{" "}
+          <InlineCode>intervals[i] = [start, end]</InlineCode>, требуется
+          объединить накладывающиеся друг на друга интервалы, и вернуть массив
+          содержащий в себе только объединенные
         </PrimaryText>
       }
     />

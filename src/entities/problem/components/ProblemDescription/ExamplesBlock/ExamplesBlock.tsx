@@ -1,7 +1,8 @@
 import { Box } from "@mui/material";
 import React from "react";
 
-import { BoldText } from "../text/BoldText";
+import { BoldText } from "../../../../../shared/components/text/BoldText";
+import { InlineCode } from "../../../../../shared/components/text/InlineCode";
 
 export type ExampleItem = {
   input: string;
@@ -10,19 +11,19 @@ export type ExampleItem = {
 };
 
 type ExampleBlockProps = {
-  items: ExampleItem[];
+  examples: ExampleItem[];
 };
 
-const ExamplesBlock: React.FC<ExampleBlockProps> = ({ items }) => {
+const ExamplesBlock: React.FC<ExampleBlockProps> = ({ examples }) => {
   return (
-    <Box sx={{ paddingTop: "2rem" }}>
-      {items.map((example, i) => (
+    <Box>
+      {examples.map((example, i) => (
         <Box
           key={i}
-          sx={{ marginBottom: i !== items.length - 1 ? "1rem" : undefined }}
+          sx={{ marginBottom: i !== examples.length - 1 ? "1rem" : undefined }}
         >
           <Box sx={{ paddingBottom: "1rem" }}>
-            <BoldText>Example {i + 1}:</BoldText>
+            <BoldText>Пример {i + 1}:</BoldText>
           </Box>
 
           <Box
@@ -34,13 +35,15 @@ const ExamplesBlock: React.FC<ExampleBlockProps> = ({ items }) => {
             }}
           >
             <Box sx={{ paddingBottom: 1 }}>
-              <BoldText>Input:</BoldText> {example.input}
+              <BoldText>Параметры:</BoldText>{" "}
+              <InlineCode>{example.input}</InlineCode>
             </Box>
             <Box sx={{ paddingBottom: 1 }}>
-              <BoldText>Output:</BoldText> {example.output}
+              <BoldText>Результат:</BoldText>{" "}
+              <InlineCode>{example.output}</InlineCode>
             </Box>
             <Box>
-              <BoldText>Explanation:</BoldText> {example.explanation}
+              <BoldText>Объяснение:</BoldText> {example.explanation}
             </Box>
           </Box>
         </Box>
