@@ -1,12 +1,12 @@
-import { createSlug } from "../../../shared/lib/helpers/createSlug";
 import { v4 as uuidv4 } from "uuid";
-import { GroupEnum } from "../types/group-enum";
+
 import { MergeIntervalsDescription } from "../../../features/problem-content/MergeIntervals/merge-intervals.description";
 import { MergeIntervalsSolution } from "../../../features/problem-content/MergeIntervals/merge-intervals.solution";
+import { createSlug } from "../../../shared/lib/helpers/createSlug";
 import { DifficultyEnum } from "../types/difficulty-enum";
-
-import { GetProblemGroupsResponse } from "./getProblemGroups";
+import { GroupEnum } from "../types/group-enum";
 import { ProblemEntity } from "../types/problem-entity";
+import { GetProblemGroupsResponse } from "./getProblemGroups";
 import { GetProblemsResponse } from "./getProblemsFeed";
 
 const problems: ProblemEntity[] = [

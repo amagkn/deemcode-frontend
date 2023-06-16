@@ -1,7 +1,8 @@
-import React from "react";
 import { Box } from "@mui/material";
-import { ConstraintText } from "../text/ConstraintText";
+import React from "react";
+
 import { BoldText } from "../text/BoldText";
+import { ConstraintText } from "../text/ConstraintText";
 
 type ConstraintsBlockProps = {
   items: string[];

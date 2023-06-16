@@ -1,10 +1,11 @@
+import { Box } from "@mui/material";
+import React, { ReactNode } from "react";
+
+import { ConstraintsBlock } from "../../../../shared/components/ConstraintsBlock/ConstraintsBlock";
 import {
   ExampleItem,
   ExamplesBlock,
 } from "../../../../shared/components/ExamplesBlock/ExamplesBlock";
-import { Box } from "@mui/material";
-import { ConstraintsBlock } from "../../../../shared/components/ConstraintsBlock/ConstraintsBlock";
-import React, { ReactNode } from "react";
 
 type ProblemDescriptionProps = {
   examples: ExampleItem[];

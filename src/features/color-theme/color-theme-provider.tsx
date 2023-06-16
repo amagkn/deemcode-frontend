@@ -1,5 +1,6 @@
-import React, { PropsWithChildren } from "react";
 import { createTheme, ThemeProvider } from "@mui/material";
+import React, { PropsWithChildren } from "react";
+
 import { ColorModeContext } from "./color-mode-context";
 
 type ThemeProps = {};

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Accordion,
   AccordionDetails,
@@ -12,11 +11,13 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import { difficultyDictionary } from "../../../entities/problem/constants/difficulty";
-import { useProblemsByGroupId } from "../hooks/useProblemsByGroupId";
-import { useQueryProblems } from "../../../entities/problem/hooks/useQueryProblems";
 import { useQueryProblemGroups } from "../../../entities/problem/hooks/useQueryProblemGroups";
+import { useQueryProblems } from "../../../entities/problem/hooks/useQueryProblems";
+import { useProblemsByGroupId } from "../hooks/useProblemsByGroupId";
 
 const ProblemFeed: React.FC = () => {
   const navigate = useNavigate();

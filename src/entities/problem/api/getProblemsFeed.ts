@@ -1,5 +1,5 @@
-import { problemFeedDataMock } from "./mocks";
 import { ProblemFeedItem } from "../types/problem-feed-item";
+import { problemFeedDataMock } from "./mocks";
 
 export type GetProblemsResponse = ProblemFeedItem[];
 

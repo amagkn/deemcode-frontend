@@ -1,5 +1,6 @@
-import React, { useEffect, useRef } from "react";
 import { Box, List, ListItem } from "@mui/material";
+import React, { useEffect, useRef } from "react";
+
 import { hljs } from "../../../../shared/lib/hljs/hljs";
 
 type ProblemSolutionProps = {

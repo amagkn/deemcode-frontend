@@ -1,6 +1,7 @@
+import { Box, Grid } from "@mui/material";
 import React from "react";
 import { useParams } from "react-router-dom";
-import { Box, Grid } from "@mui/material";
+
 import { useQueryProblemBy } from "../entities/problem/hooks/useQueryProblemBy";
 
 const ProblemSolutionPage = () => {

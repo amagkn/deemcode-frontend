@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { ProblemEntity } from "../types/problem-entity";
 
 import { getProblemBy } from "../api/getProblemBy";
+import { ProblemEntity } from "../types/problem-entity";
 
 export const useQueryProblemBy = (slug: string) => {
   const [problem, setProblem] = useState<ProblemEntity | null>(null);

@@ -1,5 +1,6 @@
-import hljs from "highlight.js";
 import "highlight.js/styles/srcery.css";
+
+import hljs from "highlight.js";
 
 hljs.configure({ languages: ["javascript"] });
 

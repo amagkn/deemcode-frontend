@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { GroupEntity } from "../types/group-entity";
 import { getProblemGroups } from "../api/getProblemGroups";
 import { groupsDictionary } from "../constants/groups";
+import { GroupEntity } from "../types/group-entity";
 
 interface GroupWithTitle extends GroupEntity {
   title: string;
