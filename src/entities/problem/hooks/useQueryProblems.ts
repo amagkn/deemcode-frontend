@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { ProblemEntity } from "../types/problem-entity";
-import { getProblems } from "../api";
+
+import { getProblemsFeed } from "../api/getProblemsFeed";
+import { ProblemFeedItem } from "../types/problem-feed-item";
 
 export const useQueryProblems = () => {
-  const [problems, setProblems] = useState<ProblemEntity[]>([]);
+  const [problems, setProblems] = useState<ProblemFeedItem[]>([]);
 
   useEffect(() => {
     const fn = async () => {
-      const data = await getProblems();
+      const data = await getProblemsFeed();
 
       if (data) {
         setProblems(data);

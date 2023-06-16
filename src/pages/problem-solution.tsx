@@ -14,7 +14,7 @@ const ProblemSolutionPage = () => {
   const ProblemSolution = problem.solution;
 
   return (
-    <Grid sx={{ padding: 5 }} container spacing={0}>
+    <Grid sx={{ padding: 5, minHeight: "100vh" }} container spacing={0}>
       <Grid item xs={12} md={6}>
         <Box
           sx={{

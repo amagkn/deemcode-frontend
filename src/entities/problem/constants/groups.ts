@@ -4,7 +4,7 @@ export const groupsDictionary: { [key in GroupEnum]: string } = {
   [GroupEnum.arrayAndHashing]: "Arrays and hashing",
 };
 
-export const groupsByOrder: {
+export const groups: {
   id: GroupEnum;
   title: string;
 }[] = [

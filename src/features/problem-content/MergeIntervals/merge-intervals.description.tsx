@@ -1,8 +1,8 @@
 import React from "react";
-import { PrimaryText } from "../../../../../shared/components/text/PrimaryText";
-import { ConstraintText } from "../../../../../shared/components/text/ConstraintText";
-import { ExampleItem } from "../../../../../shared/components/ExamplesBlock/ExamplesBlock";
-import { ProblemDescription } from "../../ProblemDescription/ProblemDescription";
+import { PrimaryText } from "../../../shared/components/text/PrimaryText";
+import { ConstraintText } from "../../../shared/components/text/ConstraintText";
+import { ExampleItem } from "../../../shared/components/ExamplesBlock/ExamplesBlock";
+import { ProblemDescription } from "../../../entities/problem/components/ProblemDescription/ProblemDescription";
 
 type MergeIntervalsDescriptionProps = {};
 

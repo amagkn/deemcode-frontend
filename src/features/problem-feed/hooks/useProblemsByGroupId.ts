@@ -1,10 +1,10 @@
 import { useMemo } from "react";
 import { GroupEnum } from "../../../entities/problem/types/group-enum";
-import { ProblemEntity } from "../../../entities/problem/types/problem-entity";
+import { ProblemFeedItem } from "../../../entities/problem/types/problem-feed-item";
 
-export const useProblemsByGroupId = (problems: ProblemEntity[]) => {
+export const useProblemsByGroupId = (problems: ProblemFeedItem[]) => {
   return useMemo(() => {
-    return problems.reduce<{ [key in GroupEnum]: ProblemEntity[] }>(
+    return problems.reduce<{ [key in GroupEnum]: ProblemFeedItem[] }>(
       (acc, el) => {
         if (acc[el.groupId]) {
           acc[el.groupId]!.push(el);

@@ -14,9 +14,9 @@ const ConstraintsBlock: React.FC<ConstraintsBlockProps> = ({ items }) => {
         <BoldText>Constraints:</BoldText>
       </Box>
       <ul>
-        {items.map((constraint) => {
+        {items.map((constraint, i) => {
           return (
-            <li>
+            <li key={i}>
               <ConstraintText>{constraint}</ConstraintText>
             </li>
           );

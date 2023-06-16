@@ -17,7 +17,7 @@ const ExamplesBlock: React.FC<ExampleBlockProps> = ({ items }) => {
     <Box sx={{ paddingTop: "2rem" }}>
       {items.map((example, i) => (
         <Box
-          key={example.explanation}
+          key={i}
           sx={{ marginBottom: i !== items.length - 1 ? "1rem" : undefined }}
         >
           <Box sx={{ paddingBottom: "1rem" }}>

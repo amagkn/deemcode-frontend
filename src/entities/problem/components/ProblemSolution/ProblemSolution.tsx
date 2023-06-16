@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Box, List, ListItem } from "@mui/material";
+import { hljs } from "../../../../shared/lib/hljs/hljs";
 
 type ProblemSolutionProps = {
   clues: string[];
@@ -10,6 +11,14 @@ const ProblemSolution: React.FC<ProblemSolutionProps> = ({
   clues,
   solution,
 }) => {
+  const codeRef = useRef(null);
+
+  useEffect(() => {
+    if (codeRef.current) {
+      hljs.highlightElement(codeRef.current);
+    }
+  }, [codeRef]);
+
   return (
     <Box>
       <h4 style={{ margin: 0 }}>Подсказки:</h4>
@@ -23,8 +32,8 @@ const ProblemSolution: React.FC<ProblemSolutionProps> = ({
 
       <Box>
         <h4>Решение:</h4>
-        <pre className="prettyprint">
-          <code>{solution}</code>
+        <pre>
+          <code ref={codeRef}>{solution}</code>
         </pre>
       </Box>
     </Box>

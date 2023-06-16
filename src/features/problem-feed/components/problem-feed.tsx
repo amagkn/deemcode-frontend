@@ -1,5 +1,4 @@
 import React from "react";
-import { groupsByOrder } from "../../../entities/problem/constants/groups";
 import {
   Accordion,
   AccordionDetails,
@@ -17,12 +16,14 @@ import { useNavigate } from "react-router-dom";
 import { difficultyDictionary } from "../../../entities/problem/constants/difficulty";
 import { useProblemsByGroupId } from "../hooks/useProblemsByGroupId";
 import { useQueryProblems } from "../../../entities/problem/hooks/useQueryProblems";
+import { useQueryProblemGroups } from "../../../entities/problem/hooks/useQueryProblemGroups";
 
 const ProblemFeed: React.FC = () => {
   const navigate = useNavigate();
 
   const { problems } = useQueryProblems();
   const dataByGroupId = useProblemsByGroupId(problems ? problems : []);
+  const { groups } = useQueryProblemGroups();
 
   const redirectToProblem = (problemSlug: string) => {
     navigate(`/problems/${problemSlug}`);
@@ -30,7 +31,7 @@ const ProblemFeed: React.FC = () => {
 
   return (
     <div>
-      {groupsByOrder.map((group) => (
+      {groups.map((group) => (
         <Accordion key={group.id}>
           <AccordionSummary id={group.id}>
             <Typography>{group.title}</Typography>
