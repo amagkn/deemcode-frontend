@@ -2,11 +2,11 @@ import { useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../shared/store/store";
 import { LoadingStatusEnum } from "../../../shared/types/loadingStatusEnum";
-import { problemsGroupsSelector } from "../store/selectors/problemsGroupsSelector";
+import { selectProblemGroups } from "../store/selectors/selectProblemGroups";
 import { fetchProblemsGroups } from "../store/thunks/problemsThunks";
 
 export const useQueryProblemGroups = () => {
-  const { groups, loading } = useAppSelector(problemsGroupsSelector);
+  const { groups, loading } = useAppSelector(selectProblemGroups);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

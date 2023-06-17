@@ -2,11 +2,11 @@ import { useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../shared/store/store";
 import { LoadingStatusEnum } from "../../../shared/types/loadingStatusEnum";
-import { problemsFeedSelector } from "../store/selectors/problemsFeedSelector";
+import { selectProblemFeed } from "../store/selectors/selectProblemFeed";
 import { fetchProblemsFeed } from "../store/thunks/problemsThunks";
 
 export const useQueryProblemsFeed = () => {
-  const { feed, loading } = useAppSelector(problemsFeedSelector);
+  const { feed, loading } = useAppSelector(selectProblemFeed);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

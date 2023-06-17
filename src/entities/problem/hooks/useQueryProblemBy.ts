@@ -1,12 +1,12 @@
 import { useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../shared/store/store";
-import { problemBySelector } from "../store/selectors/problemBySelector";
+import { selectProblemBy } from "../store/selectors/selectProblemBy";
 import { fetchProblemBy } from "../store/thunks/problemsThunks";
 
 export const useQueryProblemBy = (slug: string) => {
   const { problem, loading } = useAppSelector((state) =>
-    problemBySelector(state, slug)
+    selectProblemBy(state, slug)
   );
   const dispatch = useAppDispatch();
 
