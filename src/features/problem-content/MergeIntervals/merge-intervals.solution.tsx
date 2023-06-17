@@ -12,7 +12,7 @@ const clues: string[] = [
 ];
 
 const MergeIntervalsSolution: React.FC<MergeIntervalsSolutionProps> = () => {
-  return <ProblemSolution clues={clues} solution={solutionString} />;
+  return <ProblemSolution solutions={[{ clues, solution: solutionString }]} />;
 };
 
 export { MergeIntervalsSolution };

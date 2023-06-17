@@ -1,22 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-import { getProblemBy } from "../api/getProblemBy";
-import { ProblemEntity } from "../types/problem-entity";
+import { useAppDispatch, useAppSelector } from "../../../shared/store/store";
+import { problemBySelector } from "../store/selectors/problemBySelector";
+import { fetchProblemBy } from "../store/thunks/problemsThunks";
 
 export const useQueryProblemBy = (slug: string) => {
-  const [problem, setProblem] = useState<ProblemEntity | null>(null);
+  const { problem, loading } = useAppSelector((state) =>
+    problemBySelector(state, slug)
+  );
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const fn = async () => {
-      const data = await getProblemBy(slug);
-
-      if (data) {
-        setProblem(data);
-      }
-    };
-
-    fn();
-  }, [slug]);
+    if (!loading) {
+      dispatch(fetchProblemBy(slug));
+    }
+  }, [dispatch, loading, slug]);
 
   return {
     problem,

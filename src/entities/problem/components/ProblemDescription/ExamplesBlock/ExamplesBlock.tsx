@@ -35,7 +35,7 @@ const ExamplesBlock: React.FC<ExampleBlockProps> = ({ examples }) => {
             }}
           >
             <Box sx={{ paddingBottom: 1 }}>
-              <BoldText>Параметры:</BoldText>{" "}
+              <BoldText>Аргументы:</BoldText>{" "}
               <InlineCode>{example.input}</InlineCode>
             </Box>
             <Box sx={{ paddingBottom: 1 }}>

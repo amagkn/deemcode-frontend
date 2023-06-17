@@ -16,14 +16,14 @@ import { useNavigate } from "react-router-dom";
 
 import { difficultyDictionary } from "../../../entities/problem/constants/difficulty";
 import { useQueryProblemGroups } from "../../../entities/problem/hooks/useQueryProblemGroups";
-import { useQueryProblems } from "../../../entities/problem/hooks/useQueryProblems";
+import { useQueryProblemsFeed } from "../../../entities/problem/hooks/useQueryProblemsFeed";
 import { useProblemsByGroupId } from "../hooks/useProblemsByGroupId";
 
 const ProblemFeed: React.FC = () => {
   const navigate = useNavigate();
 
-  const { problems } = useQueryProblems();
-  const dataByGroupId = useProblemsByGroupId(problems ? problems : []);
+  const { feed } = useQueryProblemsFeed();
+  const dataByGroupId = useProblemsByGroupId(feed ? feed : []);
   const { groups } = useQueryProblemGroups();
 
   const redirectToProblem = (problemSlug: string) => {

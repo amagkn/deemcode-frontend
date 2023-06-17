@@ -6,9 +6,10 @@ import { createSlug } from "../../../shared/lib/helpers/createSlug";
 import { DifficultyEnum } from "../types/difficulty-enum";
 import { GroupEnum } from "../types/group-enum";
 import { ProblemEntity } from "../types/problem-entity";
-import { GetProblemGroupsResponse } from "./getProblemGroups";
-import { GetProblemsResponse } from "./getProblemsFeed";
-
+import {
+  GetProblemGroupsResponse,
+  GetProblemsFeedResponse,
+} from "./ProblemApi";
 const problems: ProblemEntity[] = [
   {
     title: "Объединить интервалы",
@@ -21,13 +22,15 @@ const problems: ProblemEntity[] = [
   },
 ];
 
-export const problemFeedDataMock: GetProblemsResponse = problems.map((p) => ({
-  groupId: p.groupId,
-  id: p.id,
-  slug: p.slug,
-  difficulty: p.difficulty,
-  title: p.title,
-}));
+export const problemFeedDataMock: GetProblemsFeedResponse = problems.map(
+  (p) => ({
+    groupId: p.groupId,
+    id: p.id,
+    slug: p.slug,
+    difficulty: p.difficulty,
+    title: p.title,
+  })
+);
 
 export const getProblemBySlugFromMock = (slug: string) =>
   problems.find((p) => p.slug === slug);

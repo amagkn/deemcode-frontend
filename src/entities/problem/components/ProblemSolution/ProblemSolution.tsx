@@ -1,17 +1,20 @@
-import { Box, List, ListItem } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Box,
+  List,
+  ListItem,
+} from "@mui/material";
 import React, { useEffect, useRef } from "react";
 
 import { hljs } from "../../../../shared/lib/hljs/hljs";
 
 type ProblemSolutionProps = {
-  clues: string[];
-  solution: string;
+  solutions: { clues: string[]; solution: string }[];
 };
 
-const ProblemSolution: React.FC<ProblemSolutionProps> = ({
-  clues,
-  solution,
-}) => {
+const ProblemSolution: React.FC<ProblemSolutionProps> = ({ solutions }) => {
   const codeRef = useRef(null);
 
   useEffect(() => {
@@ -22,21 +25,43 @@ const ProblemSolution: React.FC<ProblemSolutionProps> = ({
 
   return (
     <Box>
-      <h4 style={{ margin: 0 }}>Подсказки:</h4>
-      <List>
-        {clues.map((c, i) => (
-          <ListItem key={i} disableGutters divider>
-            {c}
-          </ListItem>
-        ))}
-      </List>
+      {solutions.map(({ solution, clues }, solutionIndex) => {
+        return (
+          <Box
+            style={{ marginTop: solutionIndex > 0 ? "2rem" : undefined }}
+            key={solutionIndex}
+          >
+            <h2 style={{ margin: 0, textAlign: "center" }}>
+              Решение {solutions.length > 1 ? solutionIndex + 1 : null}
+            </h2>
+            <h4 style={{ margin: 0, marginTop: "1rem" }}>Подсказки:</h4>
+            <List>
+              {clues.map((clue, clueIndex) => (
+                <ListItem
+                  key={solutionIndex + clueIndex}
+                  disableGutters
+                  divider
+                >
+                  {clue}
+                </ListItem>
+              ))}
+            </List>
 
-      <Box>
-        <h4>Решение:</h4>
-        <pre>
-          <code ref={codeRef}>{solution}</code>
-        </pre>
-      </Box>
+            <Box>
+              <Accordion>
+                <AccordionSummary>
+                  <h4 style={{ margin: 0 }}>Код</h4>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <pre>
+                    <code ref={codeRef}>{solution}</code>
+                  </pre>
+                </AccordionDetails>
+              </Accordion>
+            </Box>
+          </Box>
+        );
+      })}
     </Box>
   );
 };

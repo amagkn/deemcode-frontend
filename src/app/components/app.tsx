@@ -5,7 +5,7 @@ import { RouterProvider } from "react-router-dom";
 
 import { ColorThemeProvider } from "../../features/color-theme/color-theme-provider";
 import { router } from "../../pages/router";
-import { store } from "../store/store";
+import { store } from "../../shared/store/store";
 
 const App: React.FC = () => {
   return (
