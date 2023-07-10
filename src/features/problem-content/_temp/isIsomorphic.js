@@ -6,22 +6,20 @@
  * @return {boolean}
  */
 var isIsomorphic = function (s, t) {
-  const mapa = {};
+  const dict = {};
   const set = new Set();
 
   for (let i = 0; i < s.length; i++) {
-    const tChar = t[i];
-    const sChar = s[i];
+    const charS = s[i];
+    const charT = t[i];
 
-    if (sChar in mapa) {
-      const needChar = mapa[sChar];
-
-      if (needChar !== tChar) return false;
+    if (charS in dict) {
+      if (dict[charS] !== charT) return false;
     } else {
-      if (set.has(tChar)) return false;
+      if (set.has(charT)) return false;
 
-      mapa[sChar] = tChar;
-      set.add(tChar);
+      dict[charS] = charT;
+      set.add(charT);
     }
   }
 

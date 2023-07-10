@@ -8,7 +8,7 @@
  * @param {string} s
  * @return {boolean}
  */
-var isPalindrome = function (s) {
+var _isPalindrome = function (s) {
   let cleanedStr = "";
 
   for (let char of s) {
@@ -25,6 +25,41 @@ var isPalindrome = function (s) {
     const fromEnd = cleanedStr[cleanedStr.length - 1 - i];
 
     if (fromStart !== fromEnd) return false;
+  }
+
+  return true;
+};
+
+// Без цикла с очисткой строки
+const isAlphabetic = (char) => {
+  return (char >= "a" && char <= "z") || (char >= "0" && char <= "9");
+};
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isPalindrome = function (s) {
+  let l = 0;
+  let r = s.length - 1;
+
+  while (l < r) {
+    const charFromStart = s[l].toLowerCase();
+    const charFromEnd = s[r].toLowerCase();
+
+    if (!isAlphabetic(charFromStart)) {
+      l++;
+      continue;
+    }
+
+    if (!isAlphabetic(charFromEnd)) {
+      r--;
+      continue;
+    }
+
+    if (charFromStart !== charFromEnd) return false;
+    l++;
+    r--;
   }
 
   return true;

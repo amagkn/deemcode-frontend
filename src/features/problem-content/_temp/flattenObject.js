@@ -6,30 +6,29 @@
 для представления иерархии свойств.
 */
 
-const flattenObject = (obj) => {
-  const queue = [obj];
+function toFlattenObj(obj) {
   const result = {};
+  const queue = [obj];
 
   while (queue.length) {
-    const current = queue.shift();
+    const curr = queue.shift();
 
-    for (let [key, value] of Object.entries(current)) {
-      if (key === "prefix") continue;
+    for (const [key, value] of Object.entries(curr)) {
+      if (key === "path") continue;
 
-      let newProp = current.prefix ? `${current.prefix}.${key}` : key;
+      const newPath = curr.path ? `${curr.path}.${key}` : key;
 
-      if (Object.isExtensible(value)) {
-        value.prefix = newProp;
-
+      if (typeof value === "object") {
+        value.path = newPath;
         queue.push(value);
       } else {
-        result[newProp] = value;
+        result[newPath] = value;
       }
     }
   }
 
   return result;
-};
+}
 
 const obj = {
   a: {
@@ -42,7 +41,7 @@ const obj = {
   f: 4,
 };
 
-const flattenedObj = flattenObject(obj);
+const flattenedObj = toFlattenObj(obj);
 
 console.log(flattenedObj);
 // Ожидаемый результат: { 'a.b.c': 1, 'a.b.d': 2, 'a.e': 3, 'f': 4 } || { "f": 4, "a.e": 3, "a.b.c": 1, "a.b.d": 2 }

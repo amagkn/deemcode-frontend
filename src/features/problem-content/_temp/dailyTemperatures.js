@@ -6,33 +6,28 @@
  * @return {number[]}
  */
 var dailyTemperatures = function (temperatures) {
-  const stack = [
-    {
-      index: temperatures.length - 1,
-      value: temperatures[temperatures.length - 1],
-    },
-  ];
-  const result = [0];
+  const result = [];
+  const stack = [];
 
-  for (let i = temperatures.length - 2; i >= 0; i--) {
-    const currentTemp = temperatures[i];
+  for (let i = temperatures.length - 1; i >= 0; i--) {
+    const currTemp = temperatures[i];
 
     while (stack.length) {
-      const lastTemp = stack[stack.length - 1];
+      const prevTemp = stack[stack.length - 1];
 
-      if (lastTemp.value > currentTemp) {
-        result.unshift(lastTemp.index - i);
+      if (prevTemp.value - currTemp > 0) {
+        result.unshift(prevTemp.index - i);
         break;
       } else {
         stack.pop();
       }
     }
 
-    if (stack.length === 0) {
+    if (!stack.length) {
       result.unshift(0);
     }
 
-    stack.push({ index: i, value: currentTemp });
+    stack.push({ value: currTemp, index: i });
   }
 
   return result;

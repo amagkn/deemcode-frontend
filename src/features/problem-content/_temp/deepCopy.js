@@ -1,16 +1,16 @@
-const deepCopy = (obj) => {
-  let result = {};
+function deepCopy(obj) {
+  const result = {};
 
   for (const [key, value] of Object.entries(obj)) {
-    if (typeof value === "object" && !Array.isArray(value) && value !== null) {
-      result = { ...result, [key]: { ...deepCopy(value) } };
+    if (typeof value === "object") {
+      result[key] = deepCopy(value);
     } else {
       result[key] = value;
     }
   }
 
   return result;
-};
+}
 
 const a = {
   b: 12,

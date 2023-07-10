@@ -6,20 +6,18 @@
  * @return {boolean}
  */
 var containsNearbyDuplicate = function (nums, k) {
-  let values = {};
+  const dict = {};
 
-  for (let i = nums.length - 1; i >= 0; i--) {
+  for (let i = 0; i < nums.length; i++) {
     const curr = nums[i];
 
-    if (curr in values) {
-      if (values[curr] - i <= k) {
+    if (curr in dict) {
+      if (i - dict[curr] <= k) {
         return true;
-      } else {
-        values[curr] = i;
       }
-    } else {
-      values[curr] = i;
     }
+
+    dict[curr] = i;
   }
 
   return false;
